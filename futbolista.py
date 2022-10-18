@@ -1,47 +1,46 @@
-from deportista import Deportista
 from persona import Persona
+from deportista import Deportista
 
+class Futbolista(Persona,Deportista):
+    listaFutbolistas = []
 
-class Futbolista(Deportista):
+    def __init__(self, nombre, edad, altura, sexo, añosPracticando, golesMarcados, tarjetasRojas, piernaHabil):
 
+        
+        Persona.__init__(self,nombre,edad,altura,sexo)
+        Deportista.__init__(self,añosPracticando)
+        self._golesMarcados = golesMarcados
+        self._tarjetasRojas = tarjetasRojas
+        self._piernaHabil = piernaHabil
+        Futbolista.listaFutbolistas.append(self)
 
+    def getPiernaHabil(self):
+        return self._piernaHabil
 
-
-    _listaFutbolistas=[]
-    def __init__(self,nombre,edad,altura,sexo,años,goles,rojas,pierna):
-
-        super().__init__(nombre,edad,altura,sexo,"Futbol",años)
-        self._golesMarcados=goles
-        self._tarjetasRojas=rojas
-        self._piernaHabil=pierna
-        Futbolista._listaFutbolistas.append(self)
-
-    @classmethod
-    def getListaFutbolistas(cls):
-        cls._listaFutbolistas
-
-    def getGolesMarcados(self):
-        return self._golesMarcados
-    
-    def setGolesMarcados(self,nuevo):
-        self._golesMarcados=nuevo
+    def setPiernaHabil(self,piernaHabil):
+        self._piernaHabil = piernaHabil
 
     def getTarjetasRojas(self):
         return self._tarjetasRojas
 
-    def setTarjetasRojas(self,nuevo):
-        self._tarjetasRojas=nuevo
-    
-    def getPiernaHabil(self):
-        return self._piernaHabil
-   
-    def setPiernaHabil(self,nuevo):
-        self._piernaHabil=nuevo
+    def getGolesMarcados(self):
+        return self._golesMarcados
+
+    def setGolesMarcados(self,golesMarcados):
+        self._golesMarcados = golesMarcados
+
+    def setTarjetasRojas(self,tarjetasRojas):
+        self._tarjetasRojas = tarjetasRojas
 
 
     @classmethod
-    def setListaFutbolistas(cls,nuevo):
-        cls._listaFutbolistas=nuevo
+    def getListaFutbolista(clc):
+        return clc.listatoFutbolistas
+
+    def setListaFutbolista(clc, listaFutbolistas):
+        clc.listaFutbolistas = listaFutbolistas
+
+
 
     def __str__(self):
-        return "Mi nombre es",self.getNombre(),"soy profesional en el deporte",self.getDeporte(),"Tengo", str(self.getEdad()),"años de edad y llevo",str(self.getAñosPracticando()),"años en el deporte"
+        return f"Mi nombre es {self.getNombre()} soy profesional en el deporte {self.getDeporte()} Tengo {self.getEdad()} años de edad y llevo {self.getAñosPracticando()} años en el deporte"
